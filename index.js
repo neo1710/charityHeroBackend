@@ -9,6 +9,11 @@ const donationRouter = require("./routes/donationRoutes");
 const historyRouter = require("./routes/history");
 app.use(express.json());
 app.use(cors());
+app.use(cors({
+  origin: 'https://charityhero.vercel.app', // Allow specific origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}))
 
 // Routes
 app.use("/user", userRouter);
