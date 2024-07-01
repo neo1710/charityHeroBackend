@@ -56,6 +56,7 @@ app.listen(process.env.port, async () => {
   try {
     await connection;
     console.log("Connected to MongoDB");
+    console.log(process.env.mongoURL);
   } catch (error) {
     console.log(error);
   }
