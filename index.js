@@ -8,12 +8,17 @@ const userRouter = require("./routes/userRoutes");
 const donationRouter = require("./routes/donationRoutes");
 const historyRouter = require("./routes/history");
 app.use(express.json());
-app.use(cors());
 app.use(cors({
-  origin: 'https://charityhero.vercel.app', // Allow specific origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}))
+  origin: [
+    'https://charityhero.vercel.app',
+    'https://zany-bassoon-76qx94xwp74fr957-3000.app.github.dev'
+  ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+app.options('*', cors()); // 🔥 This makes OPTIONS requests respond with proper CORS headers
 
 // Routes
 app.use("/user", userRouter);
